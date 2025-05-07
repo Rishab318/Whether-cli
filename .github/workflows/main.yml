@@ -18,6 +18,4 @@ jobs:
         run: yarn
 
       - name: Semantic Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.SSH_TOKEN }}
         run: npx semantic-release
