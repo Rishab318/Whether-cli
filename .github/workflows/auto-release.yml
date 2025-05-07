@@ -1,0 +1,83 @@
+name: Create Release
+
+on:
+  push:
+    branches:
+      - main  # Triggers when code is pushed or merged to main branch
+
+permissions:
+  contents: write  # Needed for creating releases and tags
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Important: fetch all history and tags
+      
+      - name: Get previous tag
+        id: previous-tag
+        run: |
+          # Get the latest tag or set to v0.0.0 if no tags exist
+          PREVIOUS_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+          echo "PREVIOUS_TAG=$PREVIOUS_TAG" >> $GITHUB_OUTPUT
+      
+      - name: Determine version increment
+        id: version
+        run: |
+          # Get commit messages since last tag
+          COMMITS=$(git log ${{ steps.previous-tag.outputs.PREVIOUS_TAG }}..HEAD --pretty=format:"%s")
+          
+          # Initialize version parts from previous tag
+          IFS='.' read -r MAJOR MINOR PATCH < <(echo ${${{ steps.previous-tag.outputs.PREVIOUS_TAG }}#v} | tr -d 'v')
+          
+          # Set default to patch increment
+          INCREMENT="patch"
+          
+          # Check commit messages for version indicators
+          if echo "$COMMITS" | grep -i -E "breaking|BREAKING CHANGE|!:"; then
+            INCREMENT="major"
+          elif echo "$COMMITS" | grep -i -E "^feat|^feature|^add|^new"; then
+            INCREMENT="minor"
+          fi
+          
+          # Increment version based on commit types
+          if [ "$INCREMENT" = "major" ]; then
+            MAJOR=$((MAJOR + 1))
+            MINOR=0
+            PATCH=0
+          elif [ "$INCREMENT" = "minor" ]; then
+            MINOR=$((MINOR + 1))
+            PATCH=0
+          else
+            PATCH=$((PATCH + 1))
+          fi
+          
+          # Set new version
+          NEW_VERSION="v$MAJOR.$MINOR.$PATCH"
+          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_OUTPUT
+          echo "Incrementing $INCREMENT version: ${{ steps.previous-tag.outputs.PREVIOUS_TAG }} → $NEW_VERSION"
+      
+      - name: Create Release Notes
+        id: release-notes
+        run: |
+          # Generate release notes from commits
+          NOTES=$(git log ${{ steps.previous-tag.outputs.PREVIOUS_TAG }}..HEAD --pretty=format:"- %s%n")
+          echo "NOTES<<EOF" >> $GITHUB_OUTPUT
+          echo "$NOTES" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+      
+      - name: Create Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.version.outputs.NEW_VERSION }}
+          release_name: Release ${{ steps.version.outputs.NEW_VERSION }}
+          body: |
+            ## What's Changed
+            ${{ steps.release-notes.outputs.NOTES }}
+          draft: false
+          prerelease: false
