@@ -1,0 +1,62 @@
+.data-container {
+  display: flex;
+  flex-direction: column;
+  .name-idnumber {
+    align-items: center;
+    display: inline-flex;
+    margin-bottom: 5px;
+    .middle-dot {
+      height: 4px;
+      width: 4px;
+      border-radius: 2px;
+      margin: 0 4px;
+      background-color: var(--osp-color-grey);
+    }
+  }
+}
+.toast-container {
+  position: relative;
+  width: auto;
+  .p-toast {
+    position: static !important;
+    width: 100%;
+    max-width: 100%;
+    margin: 1rem 0rem;
+    .p-toast-message.p-toast-message-error {
+      border: none;
+      border-radius: 8px;
+      background: var(--System-Error-10, #ffecea);
+      color: var(--Grey-Black-800, #1a1a1a);
+      font-family: "Montserrat";
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 600;
+      box-shadow: none;
+
+      .p-toast-message-content {
+        align-items: center;
+        padding: 1rem 0.5rem;
+        svg {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          border: 9px solid #ffd9d7;
+          background: #ffd9d7;
+        }
+        .p-toast-message-text {
+          .p-toast-summary {
+            display: none;
+          }
+          .p-toast-detail {
+            margin-top: 0;
+          }
+        }
+        div {
+          .p-toast-icon-close {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

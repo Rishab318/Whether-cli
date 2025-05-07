@@ -1,0 +1,197 @@
+.order-card {
+  background-color: var(--osp-color-background);
+  padding: 0.625rem;
+  font-family: "Montserrat";
+  width: 24rem;
+  position: sticky;
+  top: 5rem;
+  padding-top: 2rem;
+  .card-title {
+    color: $black;
+    font-family: "Montserrat";
+    font-size: 1.375rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 126%;
+    margin-bottom: 1rem;
+  }
+  .plan-card {
+    box-shadow: none;
+    border-radius: 1.5rem;
+    padding: 0rem;
+    .data-container {
+      padding: 1.5rem;
+      .body-container {
+        display: flex;
+        flex-direction: column;
+        .card-header {
+          display: flex;
+          padding: 0.5rem 0rem;
+          gap: 1rem;
+          .icon-container {
+            min-width: fit-content;
+            img {
+              height: 1.5rem;
+              width: 1.5rem;
+            }
+          }
+          .description-container {
+            display: flex;
+            flex-direction: column;
+            min-width: 9rem;
+
+            .plan-card-title {
+              color: var(--osp-black-color);
+              font-family: "Montserrat";
+              font-size: 1.125rem;
+              font-style: normal;
+              font-weight: 700;
+              line-height: 126%;
+            }
+            .plan-card-description {
+              color: var(--osp-color-grey);
+              font-family: "Montserrat";
+              font-size: 0.75rem;
+              font-style: normal;
+              font-weight: 600;
+              line-height: 126%;
+              padding: 0.5rem 0rem;
+              margin-top: 0%;
+              max-width: 12.9375rem;
+            }
+          }
+
+          .plan-card-value {
+            color: var(--osp-black-color);
+            font-family: "Montserrat";
+            font-size: 1.125rem;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 126%;
+            text-align: right;
+            min-width: fit-content;
+          }
+        }
+        .card-footer-container {
+          display: flex;
+          justify-content: space-between;
+          padding: 0.5rem 0rem 0.5rem 2.5rem;
+          .footer-data {
+            color: var(--osp-black-color);
+            font-family: "Montserrat";
+            font-size: 0.875rem;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 126%;
+            max-width: 13.8125rem;
+          }
+          .footer-value {
+            color: var(--osp-black-color);
+            font-family: "Montserrat";
+            font-size: 0.875rem;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 126%;
+            min-width: fit-content;
+          }
+        }
+      }
+    }
+    .p-divider {
+      margin: 0%;
+      padding: 0%;
+    }
+  }
+  .img-wrapper {
+    margin-right: 0.625rem !important;
+  }
+  .plan-card-img {
+    margin-right: 1rem;
+  }
+  .p-card-body {
+    padding: 0%;
+    .p-card-content {
+      padding: 0%;
+    }
+  }
+  //OSP-146 : image size modified
+  .info-circle-img {
+    width: 0.75rem;
+    height: 0.75rem;
+    gap: 0.625rem;
+    border-radius: 4.6875rem;
+    margin-left: 4px;
+  }
+
+  .needhelp-container {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    padding: 0.125rem 0rem;
+    .image-container {
+      display: flex;
+      align-items: center;
+    }
+  }
+  .plan-price-wrapper {
+    margin-top: 2.6rem;
+  }
+  .plan-price {
+    &:first-child {
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-family: "Montserrat";
+  }
+  .phone-icon {
+    height: 2rem;
+    width: 2.5rem;
+  }
+  .calling-number {
+    font-weight: 700;
+    font-size: 1.875rem;
+    color: var(--osp-primary-color);
+    line-height: 126%;
+    height: 2.375rem;
+  }
+  .need-help-wrapper {
+    width: 14.75rem;
+    color: $light-text;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--grey-color);
+    font-family: "Montserrat";
+    line-height: 126%;
+  }
+}
+.fui-PopoverSurface {
+  display: flex;
+  width: 14.75rem;
+  padding: 0rem !important;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  background: var(--osp-white-color);
+
+  p {
+    color: var(--osp-black-color);
+    letter-spacing: 0rem;
+    font-family: "Montserrat";
+    font-size: 0.625rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%;
+  }
+  .p-card-content {
+    padding: 0rem;
+  }
+  .close-popover {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+}

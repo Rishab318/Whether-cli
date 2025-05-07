@@ -1,0 +1,594 @@
+.top-header {
+  .main-banner {
+    background: var(--Brand-Pink-Pink-800, #ff3e77);
+    align-items: center;
+    margin-top: 100px;
+    .banner-container {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      align-items: center;
+      .title {
+        color: white;
+        padding: 32px;
+      }
+      @media (max-width: 87.5rem) {
+        .title {
+          padding: 16px;
+        }
+      }
+    }
+  }
+}
+.content-wrapper {
+  min-height: 45vh;
+
+  // display: block;
+  // padding: 2.5rem 0rem;
+  // margin-bottom: 2rem;
+
+  .card-box {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 0.875rem;
+    min-height: 250px;
+  }
+  // Reference screen paln-cards css
+  .plan-cards {
+    cursor: pointer;
+    width: 16.25rem;
+    height: fit-content;
+    border: 0.0625rem solid var(--osp-color-input-border);
+    border-radius: 0.75rem;
+    box-shadow: 0rem 0.25rem 0.125rem 0rem var(--osp-color-input-shadow);
+    gap: 0.5rem;
+    border-radius: 1rem;
+
+    &:hover {
+      border: 0.125rem solid var(--osp-primary-color);
+      box-shadow: inset 0rem 0rem 0.099rem var(--osp-primary-color);
+      background-color: var(--osp-color-card-hover);
+    }
+
+    &.selected-card {
+      border: 0.125rem solid var(--osp-primary-color);
+      box-shadow: inset 0rem 0rem 0.099rem var(--osp-primary-color);
+      background-color: var(--osp-color-card-hover);
+    }
+  }
+  .planDetailContainer {
+    padding-bottom: 10vw;
+    position: relative;
+    .loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      svg {
+        width: 100%;
+        height: 100%;
+        max-width: 50px;
+        max-height: 50px;
+      }
+
+      path {
+        animation: spin 2s linear infinite;
+        transform-origin: center;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+          opacity: 1;
+          stroke-dasharray: 1, 150;
+        }
+        25% {
+          transform: rotate(90deg);
+          opacity: 0.5;
+        }
+        50% {
+          transform: rotate(180deg);
+          stroke-dasharray: 90, 150;
+          opacity: 0.2;
+        }
+        75% {
+          transform: rotate(270deg);
+          opacity: 0.5;
+        }
+        100% {
+          transform: rotate(360deg);
+          stroke-dasharray: 1, 150;
+          opacity: 1;
+        }
+      }
+    }
+
+    .order-detail-card {
+      max-width: 22.125rem;
+      margin-left: auto;
+      position: sticky;
+      top: 5.3125rem;
+      padding-top: 2rem;
+    }
+    .stepper {
+      &.fibre-stepper {
+        max-width: unset;
+        .MuiStep-root .MuiStepContent-root {
+          padding: 0rem;
+        }
+      }
+      max-width: 53.75rem;
+      margin-right: auto;
+      position: relative;
+      .MuiStepLabel-root {
+        padding: 0;
+        .MuiStepLabel-iconContainer {
+          padding: 0;
+        }
+      }
+
+      .MuiStepIcon-root.Mui-active {
+        display: none;
+      }
+      .MuiStepIcon-root.Mui-completed {
+        display: none;
+      }
+      .MuiStepLabel-label {
+        display: flex;
+        justify-content: space-between;
+        font-size: clamp(1.125rem, 1.25vw, 1.875rem);
+        font-style: normal;
+        font-weight: 700;
+        align-items: start;
+        font-family: "Montserrat";
+        padding: 0rem;
+        margin-top: 2.5rem;
+        padding-left: 4rem;
+        &.Mui-completed {
+          color: var(--osp-color-grey);
+          .custom-stepper {
+            border-color: var(--osp-color-grey);
+            color: var(--osp-color-grey);
+          }
+          .content-label {
+            .step-sublabel {
+              span {
+                color: var(--osp-color-grey);
+              }
+            }
+          }
+        }
+        .custom-stepper {
+          border: 0.1875rem solid var(--background-color);
+          color: var(--background-color);
+          width: 2.5rem;
+          height: 2.5rem;
+          min-width: 1.5rem;
+          min-height: 1.5rem;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-right: 1rem;
+          position: absolute;
+          left: 0;
+        }
+        .content-label {
+          line-height: clamp(1.4175rem, 2vw, 3rem);
+          margin-right: auto;
+          line-height: 2.5rem;
+          .step-sublabel {
+            line-height: clamp(1.1025rem, 0.833vw, 1.25rem);
+            .sublabel {
+              display: flex;
+              flex-direction: column;
+            }
+            span {
+              font-size: clamp(0.875rem, 0.833vw, 1.25rem);
+              line-height: clamp(1.1025rem, 0.833vw, 1.25rem);
+              font-style: normal;
+              font-weight: 600;
+            }
+          }
+        }
+        .change-btn {
+          background-color: transparent !important;
+          color: var(--background-color);
+          border: none;
+          float: right;
+          font-size: clamp(1rem, 0.667vw, 1rem);
+          font-weight: 700;
+          line-height: 1.5vw;
+          padding: 0.5rem 0.75rem;
+        }
+      }
+      .MuiStep-root {
+        .MuiStepContent-root {
+          border-left: none;
+          padding: 0rem 4rem;
+          margin: 0;
+          .option {
+            font-family: "Montserrat";
+            font-size: 1.125rem;
+            font-size: clamp(0.875rem, 0.75vw, 1.125rem);
+            font-weight: 600;
+            line-height: clamp(1.1025rem, 0.945vw, 1.4175rem);
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            padding: 0;
+            letter-spacing: normal;
+          }
+        }
+      }
+    }
+
+    // for fibre stepper component
+    .fibre-stepper {
+      position: relative;
+      .buy-btn {
+        margin-left: 4rem;
+      }
+      .row {
+        // margin-left: 0% !important;
+        margin-right: 0% !important;
+      }
+      .MuiStepLabel-root {
+        padding: 0;
+        .MuiStepLabel-iconContainer {
+          padding: 0;
+        }
+      }
+
+      .MuiStepIcon-root.Mui-active {
+        display: none;
+      }
+      .MuiStepIcon-root.Mui-completed {
+        display: none;
+      }
+      .MuiStepLabel-label {
+        display: flex;
+        justify-content: space-between;
+        font-size: clamp(1.125rem, 1.25vw, 1.875rem);
+        font-style: normal;
+        font-weight: 700;
+        align-items: start;
+        font-family: "Montserrat";
+        padding: 1rem 0rem 0rem;
+        margin-top: 1.5rem;
+        padding-left: 4rem;
+        &.Mui-completed {
+          color: var(--osp-color-grey);
+          .custom-stepper {
+            border-color: var(--osp-color-grey);
+            color: var(--osp-color-grey);
+          }
+          .content-label {
+            .step-sublabel {
+              span {
+                color: var(--osp-color-grey);
+              }
+            }
+          }
+        }
+        .custom-stepper {
+          border: 0.1875rem solid var(--background-color);
+          color: var(--background-color);
+          width: 3rem;
+          height: 3rem;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-right: 1rem;
+          position: absolute;
+          left: 0;
+        }
+
+        .content-label {
+          line-height: 3rem;
+          margin-right: auto;
+          .step-sublabel {
+            line-height: 1.25rem;
+            span {
+              font-size: 1.125rem;
+              font-style: normal;
+              font-weight: 600;
+              line-height: 1.125rem;
+            }
+          }
+        }
+        .change-btn {
+          background-color: transparent !important;
+          color: var(--background-color);
+          border: none;
+          float: right;
+          font-size: 1rem;
+          font-weight: 700;
+          line-height: 1.5vw;
+          padding: 0.5rem 0.75rem;
+        }
+      }
+      .MuiStep-root {
+        .MuiStepContent-root {
+          border-left: none;
+          padding: 0rem;
+          margin: 0;
+          .option {
+            font-family: "Montserrat";
+            font-size: 1.125rem;
+            font-weight: 600;
+            line-height: 1.4175rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            padding: 0;
+            letter-spacing: normal;
+          }
+        }
+      }
+      // min width : 1901
+      @media screen and (min-width: 118.8125rem) {
+        .custom-stepper {
+          width: 3rem;
+          height: 3rem;
+        }
+      }
+      // max width : 1400
+      @media (max-width: 87.5rem) {
+        .FibreCoverageContainer,
+        .customerTypeContainer,
+        .personalDataContainer,
+        .billing-container,
+        .payment-info-container {
+          padding-left: 3.5rem;
+        }
+        .MuiStepLabel-label {
+          padding-left: 3.5rem;
+          .custom-stepper {
+            width: 2.5rem;
+            height: 2.5rem;
+          }
+          .content-label {
+            line-height: 2.5rem;
+            .step-sublabel {
+              line-height: 1rem;
+              span {
+                font-size: 0.75rem;
+              }
+            }
+          }
+        }
+      }
+      // max width : 1000
+      @media (max-width: 62.5rem) {
+        .customerTypeContainer,
+        .personalDataContainer,
+        .billing-container,
+        .payment-info-container {
+          padding-left: 3rem;
+        }
+        .MuiStepLabel-label {
+          padding-left: 3rem;
+          .custom-stepper {
+            width: 2rem;
+            height: 2rem;
+          }
+          .content-label {
+            line-height: 2rem;
+          }
+        }
+      }
+    }
+  }
+  .buy-btn {
+    background-color: var(--background-color) !important;
+    border-radius: 2.5rem;
+    border: var(--background-color) !important;
+    padding: 0.75rem 1rem 0.75rem 1rem;
+    font-weight: 700;
+    font-size: 1.375rem;
+    font-family: "Montserrat";
+    box-shadow: 0rem 0.25rem 0.125rem 0rem #912a460d;
+    margin-top: 3rem;
+    display: flex;
+    width: 20.25rem;
+    height: 3.625rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+
+    @media (max-width: 46.875rem) {
+      width: 77% !important;
+      height: 2.5rem;
+      padding: 0.5rem 0.75rem 0.5rem 0rem;
+      border-radius: 2.5rem;
+      margin-left: 0rem !important;
+      margin-top: 0.625rem;
+      font-family: "Montserrat";
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.26rem;
+      text-align: center;
+      .order-detail-card {
+        display: none;
+      }
+    }
+  }
+  @media (max-width: 48rem) {
+    .main-banner {
+      display: none;
+    }
+  }
+}
+// spinner Css
+.spinner-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(2px) brightness(0.7);
+  img {
+    width: 4rem;
+    height: 4rem;
+  }
+}
+.spinner-inline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(2px) brightness(0.7);
+  background: var(--osp-white-color);
+  img {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+.streetDropdown {
+  &.p-dropdown-panel {
+    .p-dropdown-items-wrapper {
+      .p-dropdown-items {
+        .p-dropdown-item {
+          .p-dropdown-item-label {
+            max-width: 540px;
+            // text-overflow: ellipsis;
+            text-wrap: auto;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 106.25rem) and (max-width: 118.75rem) {
+  .content-wrapper .planDetailContainer {
+    .stepper {
+      .MuiStep-root {
+        .MuiStepContent-root {
+          padding: 0rem 3.25rem;
+        }
+      }
+      .MuiStepLabel-label {
+        padding-left: 3.25rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 48rem) and (max-width: 106.24rem) {
+  .content-wrapper .planDetailContainer {
+    .stepper {
+      .MuiStep-root {
+        .MuiStepContent-root {
+          padding: 0rem 3.5rem;
+        }
+      }
+      .MuiStepLabel-label {
+        padding-left: 3.5rem;
+      }
+    }
+  }
+}
+@media (min-width: 48rem) and (max-width: 75rem) {
+  .spinner-container {
+    img {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+}
+@media (max-width: 48rem) {
+  .planDetailContainer {
+    margin-bottom: 0;
+    padding: 0.5rem 0rem 3rem 0rem;
+  }
+  .order-mobile-view {
+    display: none;
+  }
+  .content-wrapper .planDetailContainer .stepper {
+    .MuiStepLabel-label {
+      margin-top: 0.5rem;
+      padding-left: 3rem;
+      .custom-stepper {
+        margin-right: 0.5rem;
+        width: 2rem;
+        height: 2rem;
+        // border-width: 0.15rem;
+        font-size: 1rem;
+      }
+      .content-label {
+        line-height: 1.5rem;
+      }
+    }
+    .MuiStep-root .MuiStepContent-root {
+      padding: 0rem 0rem 0rem 3rem;
+    }
+    .personalDataContainer .inputContainer {
+      gap: 1rem;
+      .dropDownContainer {
+        &.row {
+          --bs-gutter-x: 1rem;
+        }
+      }
+    }
+    .customerTypeContainer .cards .p-card {
+      border-radius: 1rem;
+      &.selected-card {
+        box-shadow: inset 0rem 0rem 0rem 0.0625rem var(--osp-primary-color);
+      }
+      s .p-card-body {
+        padding: 0.75rem;
+      }
+    }
+  }
+}
+@media (min-width: 48rem) {
+  .col-md-3half {
+    width: 28.75%;
+  }
+}
+
+@media (max-width: 36rem) {
+  .order-detail-card {
+    display: none;
+  }
+  .streetDropdown {
+    &.p-dropdown-panel {
+      .p-dropdown-items-wrapper {
+        .p-dropdown-items {
+          .p-dropdown-item {
+            max-width: 287px;
+            .p-dropdown-item-label {
+              max-width: 280px;
+              // text-overflow: ellipsis;
+              text-wrap: auto;
+            }
+          }
+        }
+      }
+    }
+  }
+  // spinner Css
+  .spinner-container {
+    img {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+  .input-container .error {
+    font-size: 0.75rem;
+    top: 5px;
+  }
+  .drop-down-container .error {
+    font-size: 0.75rem;
+    top: 2px;
+  }
+}

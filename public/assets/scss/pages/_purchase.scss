@@ -1,0 +1,190 @@
+.purchase-page.vertical {
+  .custom-border {
+    border-left: 8px solid var(--color-order-pink);
+    height: 26px;
+    position: absolute;
+    top: 25px;
+    left: 10px;
+  }
+  .MuiStepLabel-label .Mui-disabled {
+    border-color: var(--color-gray) !important;
+  }
+  .MuiStepLabel-root {
+    align-items: flex-start;
+  }
+  .MuiStepper-root {
+    flex-direction: column;
+    gap: 0px;
+  }
+  .MuiStep-vertical {
+    margin-bottom: 1.5rem;
+  }
+  .MuiStep-vertical.step-in-progress {
+    margin-bottom: 0rem;
+  }
+  .stepper-content {
+    margin: 1.5rem 0rem;
+    margin-left: -2.25rem;
+  }
+  .step-last .MuiStepConnector-line {
+    display: none;
+  }
+  .MuiStep-root {
+    .MuiStepConnector-root {
+      width: 8px;
+      top: 25px;
+      left: -2px;
+      right: 0;
+    }
+    .MuiStepContent-root {
+      border-left-width: 8px;
+      margin-left: 10px;
+      min-width: 42rem;
+    }
+    .MuiStepConnector-line {
+      min-height: 26px;
+    }
+    .Mui-active.MuiStepConnector-root {
+      top: -25px;
+      left: -2px;
+      right: 0;
+      z-index: -1;
+    }
+    .MuiStepLabel-vertical {
+      flex-direction: row;
+      padding: 0px;
+      .MuiStepLabel-alternativeLabel {
+        margin-top: 0;
+        text-align: left;
+        padding-left: 0.5rem;
+      }
+    }
+  }
+
+  // Specific to step 2 Sim delivery
+  .step-2.MuiStep-root {
+    .MuiStepConnector-root {
+      height: 100%;
+    }
+    .MuiStepConnector-line {
+      min-height: 100%;
+    }
+  }
+  // Specific to step 1 attachment
+  .step-1 .MuiStepContent-root {
+    border-image: linear-gradient(to bottom, #eb5079 50%, var(--color-gray) 50%)
+      1;
+  }
+}
+
+@media (max-width: 48rem) {
+  .MuiStepContent-root {
+    min-width: auto !important;
+  }
+}
+
+.purchase-page {
+  background: var(--color-fullpage) !important;
+  .purchase {
+    height: 29.75rem;
+    gap: 2.5rem;
+
+    .container {
+      @media (max-width: 48rem) {
+        height: 0rem !important;
+        gap: 0rem;
+
+        background: var(--color-fullpage);
+      }
+    }
+  }
+  .MuiStepper-root {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-align-items: flex-start;
+    -webkit-box-align: flex-start;
+    -ms-flex-align: flex-start;
+    align-items: flex-start;
+  }
+  .container .image {
+    width: 7.8331rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    @media (max-width: 48rem) {
+      width: 4.25rem;
+      height: 4.25rem;
+      margin-bottom: 0.5rem;
+      gap: 0rem;
+      margin-top: 0;
+      display: inline;
+    }
+  }
+
+  .middle-header {
+    margin-top: 5rem;
+    .banner-container {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+    .title {
+      margin-top: 2rem;
+    }
+    @media (max-width: 48rem) {
+      .middle-header {
+        margin-top: 2rem;
+      }
+      .title {
+        width: 100%;
+        background: var(--color-fullpage);
+        gap: 0rem;
+        font-family: Montserrat;
+        font-size: 1.625rem;
+        font-weight: 700;
+        line-height: 2.0475rem;
+        text-align: center;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        margin-top: 1rem;
+      }
+      .subtitle {
+        color: var(--osp-black-color);
+        gap: 0rem;
+        background: var(--color-fullpage);
+        font-family: Montserrat;
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.26rem;
+        text-align: center;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        margin-top: 1rem;
+        padding-top: 0rem;
+        a {
+          font-family: Montserrat;
+          font-size: 1rem;
+          font-weight: 700;
+          line-height: 2.0475rem;
+          text-align: left;
+          text-underline-position: from-font;
+          text-decoration-skip-ink: none;
+          color: var(--osp-black-color);
+        }
+      }
+    }
+  }
+}
+
+// footer bg color in new design is pinkish so overriding this
+.footer {
+  background-color: var(--color-fullpage);
+}

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WorldPay Payment Integration</title>
+    <script src="https://payments.worldpay.com/resources/hpp/integrations/embedded/js/hpp-embedded-integration-library.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+      }
+
+      #custom-html {
+        min-height: 460px;
+      }
+      #custom-html iframe {
+        min-height: 100vh!important;
+      }   
+      #custom-html #wp-cl {
+        height: 100%;  
+      }      
+      .payment-result {
+        margin-top: 15px;
+        padding: 10px;
+        border-radius: 4px;
+        color: #D70500;       
+      }
+      .custom-loader {
+        min-height: 480px;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="custom-html">
+      <div class="custom-loader"><img src="./assets/svg/spinloader.gif" height="40" width="40"></div>
+    </div>
+    <!-- <a href='#' id='custom-trigger'>Start Payment</a> -->
+    <div id="payment-result"></div>
+
+    <script type="text/javascript">
+      // Get payment URL from URL parameters
+      function getPaymentUrl() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const paymentUrl = urlParams.get("paymentUrl");
+        return paymentUrl || "";
+      }
+
+      // Function to send message to parent window
+      function sendToParent(data) {
+        if (window.parent) {
+          window.parent.postMessage(data, "*");
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const paymentUrl = getPaymentUrl();
+
+        if (!paymentUrl) {
+          document.getElementById("payment-result").innerHTML =
+            '<p class="payment-result">No payment URL provided</p>';
+          return;
+        }
+
+        // Result Callback Function
+        var resultCallbackFunction = function (result) {
+          // Detailed handling of payment result
+          var resultDiv = document.getElementById("payment-result");
+
+          // Comprehensive logging of the result
+          console.log("Full Result Object:", result);
+
+          // Also send result to parent window
+          sendToParent({
+            type: "payment_result",
+            result: result,
+          });
+
+          // // Check the payment status
+          // const status = result.order?.status || result.status;
+
+          // switch(status) {
+          //     case 'success':
+          //         resultDiv.innerHTML = `
+          //             <h2>Payment Successful</h2>
+          //             <p>Status: ${status}</p>
+          //         `;
+          //         resultDiv.style.color = 'green';
+          //         break;
+
+          //     case 'cancelled':
+          //         resultDiv.innerHTML = `
+          //             <h2>Payment Cancelled</h2>
+          //             <p>The payment was cancelled by the user.</p>
+          //         `;
+          //         resultDiv.style.color = 'orange';
+          //         break;
+
+          //     case 'error':
+          //         resultDiv.innerHTML = `
+          //             <h2>Payment Error</h2>
+          //             <p>Error Code: ${result.errorCode || 'Unknown'}</p>
+          //             <p>Error Message: ${result.errorMessage || 'Unknown error'}</p>
+          //         `;
+          //         resultDiv.style.color = 'red';
+          //         break;
+
+          //     default:
+          //         resultDiv.innerHTML = `
+          //             <h2>Unknown Payment Status</h2>
+          //             <p>Status: ${status || 'Unknown'}</p>
+          //         `;
+          //         resultDiv.style.color = 'blue';
+          // }
+        };
+
+        // WorldPay integration options
+        var customOptions = {
+          url: paymentUrl,
+          type: "iframe",
+          // trigger: 'custom-trigger',
+          target: "custom-html",
+          lightboxMaskOpacity: 80,
+          lightboxMaskColor: "#000000",
+          accessibility: true,
+          debug: true,
+          language: "en",
+          country: "gb",
+          preferredPaymentMethod: "VISA-SSL",
+
+          // Add resultCallback to the options
+          resultCallback: resultCallbackFunction,
+        };
+
+        try {
+          // Initialize the library and pass options
+          var libraryObject = new WPCL.Library();
+          libraryObject.setup(customOptions);
+          console.log("WorldPay initialized successfully");
+
+          // Notify parent that we're ready
+          sendToParent({
+            type: "payment_initialized",
+            success: true,
+          });
+        } catch (error) {
+          console.error("Error setting up WorldPay library:", error);
+
+          // Notify parent of error
+          sendToParent({
+            type: "payment_initialized",
+            success: false,
+            error: error.message,
+          });
+
+          document.getElementById("payment-result").innerHTML = `
+                    <p class="payment-result">Error initializing payment: ${error.message}</p>
+                `;
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,114 @@
+//OSP scss files
+@import "./components/main-header";
+@import "./components/about_you.scss";
+@import "./components/input_text.scss";
+@import "./components/input_dropdown.scss";
+@import "./components/delivery_address";
+@import "./style.scss";
+@import "./vendors/todo.scss";
+@import "react-phone-number-input/style.css";
+@import "./components/mobile_phone_number";
+@import "./components/your_order.scss";
+@import "./components/order_placed_stepper";
+@import "./components/plans_card";
+@import "./components/phone_number_input";
+@import "./components/order_placed_footer";
+@import "./components/customer_type";
+@import "primereact/resources/themes/lara-light-blue/theme.css"; // Theme
+@import "primereact/resources/primereact.min.css"; // Core CSS
+@import "primeicons/primeicons.css"; // Icons
+@import "./components/fibre_coverage.scss";
+@import "./components/billing_address.scss";
+@import "./components/_payment_information.scss";
+@import "./pages/register";
+@import "./pages/user-details";
+@import "intl-tel-input/build/css/intlTelInput.css";
+//react-toastify
+@import "react-toastify/dist/ReactToastify.css";
+
+//bootstrap
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+//simplebar
+@import "simplebar-react/dist/simplebar.min.css";
+
+//font_awesome
+@import "~font-awesome/css/font-awesome.min.css";
+
+//apex_charts
+@import "apexcharts/dist/apexcharts.css";
+
+//flag_icons
+@import "./vendors/flag-icon.scss";
+
+//feather_icon
+@import "./vendors/feather-icon.scss";
+
+//ico_font
+@import "./vendors/icofont.scss";
+
+//themify
+@import "./vendors/themify.scss";
+
+//whether_icon
+@import "./vendors/whether-icon.scss";
+
+//react-toastify
+@import "react-toastify/dist/ReactToastify.css";
+
+//bootstrap
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+//apex_charts
+@import "apexcharts/dist/apexcharts.css";
+
+// react date-piker
+@import "react-datepicker/dist/react-datepicker.css";
+
+// Timeline-calender
+@import "react-calendar-timeline/lib/Timeline.css";
+
+//LeafLet
+@import "~leaflet/dist/leaflet.css";
+
+//react-toastify
+@import "react-toastify/dist/ReactToastify.css";
+
+//font_awesome
+@import "~font-awesome/css/font-awesome.min.css";
+
+//React-Slick
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
+
+//Gallery
+@import "photoswipe/dist/photoswipe.css";
+
+//tag inputs
+@import "react-tagsinput/react-tagsinput.css";
+
+// react date-piker
+@import "react-datepicker/dist/react-datepicker.css";
+
+//simplemde-editor
+@import "easymde/dist/easymde.min.css";
+
+//quill editor
+@import "react-quill/dist/quill.snow.css";
+@import "react-quill/dist/quill.bubble.css";
+
+//react-vertical-timeline-component
+@import "react-vertical-timeline-component/style.min.css";
+//react-image-crop
+@import "react-image-crop/src/ReactCrop.scss";
+//file_upload
+@import "filepond/dist/filepond.min.css";
+@import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
+//scrollable
+@import "react-perfect-scrollbar/dist/css/styles.css";
+//calendar
+@import "react-calendar/dist/Calendar.css";
+
+//Typeahead
+@import "~react-bootstrap-typeahead/css/Typeahead.css";
+@import "./components/login_card";

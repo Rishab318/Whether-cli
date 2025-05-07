@@ -1,0 +1,186 @@
+/**=====================
+    3.29 Login CSS Start
+==========================**/
+.login-header {
+  height: 85px;
+  border-bottom: 1px solid #e9eaeb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .call-us-on {
+    display: flex;
+  }
+  .fui-Dropdown {
+    min-width: 140px;
+    margin-right: 10px;
+  }
+  .call-us-on-text {
+    margin-bottom: 0;
+    margin-left: 10px;
+    color: #8891aa;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .calling-number {
+    margin-bottom: 0;
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: 700;
+  }
+}
+.login-card {
+  align-items: center;
+  justify-content: left;
+  margin: 0;
+  background-position: center;
+  padding: 0px;
+  .logo {
+    display: block;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  .btn-showcase {
+    .btn {
+      line-height: 1;
+      padding: 10px 12px;
+      margin: 0;
+      & + .btn {
+        margin-left: 5px;
+      }
+      svg {
+        height: 16px;
+        vertical-align: bottom;
+      }
+    }
+  }
+  .login-main {
+    width: 450px;
+    padding: 40px;
+    border-radius: 10px;
+    margin: 0 10%;
+    background-color: $white;
+    padding-top: 100px;
+    font-family: "Montserrat";
+
+    .login-title {
+      font-size: 30px;
+      font-weight: 600;
+      font-family: "Montserrat";
+    }
+    .login-description {
+      font-size: 16px;
+      font-weight: 400;
+      color: $semi-dark;
+    }
+    .btn {
+      background-color: $danger-color !important;
+      color: $white;
+      border-color: $danger-color !important;
+      height: 44px;
+    }
+    .forgot-password {
+      color: $danger-color;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .theme-form {
+      h4 {
+        margin-bottom: 5px;
+      }
+      label {
+        font-size: 14px;
+        letter-spacing: 0.4px;
+        font-family: "Montserrat";
+        font-weight: 600;
+      }
+      .checkbox label::before {
+        background-color: $card-body-color;
+        border: 1px solid #dfdfdf;
+      }
+      .or {
+        position: relative;
+        &:before {
+          content: "";
+          position: absolute;
+          width: 65%;
+          height: 2px;
+          background-color: rgba($primary-color, 0.1);
+          top: 9px;
+          z-index: 0;
+          right: 0;
+        }
+      }
+      .fui-Input {
+        width: 100%;
+      }
+      input {
+        width: 100%;
+        border-radius: 4px !important;
+        padding: 0 5px;
+        height: 44px;
+      }
+      p {
+        margin-bottom: 25px;
+        font-size: 16px;
+        color: $dark-gray;
+        font-family: Montserrat;
+        font-weight: 500;
+      }
+      .fui-Button {
+        font-family: "Montserrat";
+      }
+      .form-group {
+        margin-bottom: 10px;
+        position: relative;
+      }
+      .link {
+        position: absolute;
+        top: 10px;
+        right: 0;
+      }
+    }
+  }
+}
+.show-hide {
+  position: absolute;
+  top: 52px;
+  right: 20px;
+  transform: translateY(-50%);
+  span {
+    cursor: pointer;
+    font-size: 13px;
+    color: var(--theme-default);
+    &.show {
+      &:before {
+        content: "show";
+      }
+    }
+    &:before {
+      content: "hide";
+    }
+  }
+}
+.needs-validation {
+  .invalid-feedback {
+    color: $dark-gray;
+  }
+  .show-hide {
+    right: 30px;
+  }
+  .invalid-tooltip {
+    right: 0px;
+    &.username_tootip {
+      top: 36px;
+      right: 0;
+    }
+  }
+}
+/**=====================
+    3.29 Login CSS Ends
+==========================**/

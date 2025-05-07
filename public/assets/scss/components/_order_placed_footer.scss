@@ -1,0 +1,99 @@
+.order-footer-container {
+  padding: 4.5rem 0rem 0rem 0rem;
+  background-color: var(--osp-primary-color);
+  overflow: hidden;
+
+  .p-card {
+    .p-card-content {
+      padding: 1rem 0.5rem !important;
+    }
+    .p-card-footer button {
+      margin-top: 0 !important;
+    }
+  }
+
+  .footer-data {
+    align-self: center;
+    text-align: center;
+
+    .footer-heading {
+      font-family: "Montserrat";
+      font-size: 3.375rem;
+      font-weight: 700;
+      line-height: 4.05rem;
+      text-align: center;
+      color: var(--osp-white-color);
+    }
+
+    .footer-cards-container {
+      margin: 2.5rem 0rem;
+      gap: 2.5rem;
+
+      .cards-container {
+        display: flex;
+        justify-content: center;
+        gap: 2.5rem;
+      }
+      .secondary-link {
+        width: fit-content;
+        padding: 0.75rem 1rem 0.75rem 1rem;
+        border-radius: 2.5rem;
+        border: 3px solid var(--osp-white-color);
+        background-color: transparent;
+        color: var(--osp-white-color);
+        font-size: 1rem;
+        font-weight: 700;
+        margin: 2.5rem auto;
+        display: block;
+        &:hover {
+          background-color: var(--osp-color-inputswitch-off);
+        }
+        &:focus {
+          outline-color: transparent !important;
+          box-shadow: none;
+        }
+      }
+    }
+  }
+  img {
+    transform: translateX(-2.5rem);
+  }
+}
+
+@media (max-width: 48rem) {
+  .order-footer-container {
+    display: none;
+    min-height: fit-content;
+    width: 100%;
+
+    .footer-heading {
+      font-size: 2rem !important;
+      line-height: 2rem !important;
+      white-space: normal;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      width: 100%;
+      display: block;
+      text-align: center;
+    }
+
+    .footer-cards-container {
+      gap: 2rem;
+
+      .cards-container {
+        margin-left: 0rem !important;
+        flex-direction: column;
+        transform: translateX(0rem) !important;
+        align-items: center;
+      }
+
+      img {
+        transform: translateX(0rem) !important;
+        gap: 0rem;
+
+        width: 28.125rem;
+        height: 15.625rem;
+      }
+    }
+  }
+}
