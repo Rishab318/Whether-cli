@@ -1,83 +1,71 @@
-name: Create Release
+name: Semantic Release
 
 on:
   push:
     branches:
-      - main  # Triggers when code is pushed or merged to main branch
+      - main
 
+# Explicitly define permissions
 permissions:
-  contents: write  # Needed for creating releases and tags
+  contents: write
+  issues: write
+  pull-requests: write
 
 jobs:
-  create-release:
+  release:
+    name: Release
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Important: fetch all history and tags
+          fetch-depth: 0
+          # This is critical - use the GITHUB_TOKEN to properly authenticate
+          token: ${{ secrets.GITHUB_TOKEN }}
       
-      - name: Get previous tag
-        id: previous-tag
+      - name: Setup Git User
         run: |
-          # Get the latest tag or set to v0.0.0 if no tags exist
-          PREVIOUS_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
-          echo "PREVIOUS_TAG=$PREVIOUS_TAG" >> $GITHUB_OUTPUT
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@github.com'
       
-      - name: Determine version increment
-        id: version
-        run: |
-          # Get commit messages since last tag
-          COMMITS=$(git log ${{ steps.previous-tag.outputs.PREVIOUS_TAG }}..HEAD --pretty=format:"%s")
-          
-          # Initialize version parts from previous tag
-          IFS='.' read -r MAJOR MINOR PATCH < <(echo ${${{ steps.previous-tag.outputs.PREVIOUS_TAG }}#v} | tr -d 'v')
-          
-          # Set default to patch increment
-          INCREMENT="patch"
-          
-          # Check commit messages for version indicators
-          if echo "$COMMITS" | grep -i -E "breaking|BREAKING CHANGE|!:"; then
-            INCREMENT="major"
-          elif echo "$COMMITS" | grep -i -E "^feat|^feature|^add|^new"; then
-            INCREMENT="minor"
-          fi
-          
-          # Increment version based on commit types
-          if [ "$INCREMENT" = "major" ]; then
-            MAJOR=$((MAJOR + 1))
-            MINOR=0
-            PATCH=0
-          elif [ "$INCREMENT" = "minor" ]; then
-            MINOR=$((MINOR + 1))
-            PATCH=0
-          else
-            PATCH=$((PATCH + 1))
-          fi
-          
-          # Set new version
-          NEW_VERSION="v$MAJOR.$MINOR.$PATCH"
-          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_OUTPUT
-          echo "Incrementing $INCREMENT version: ${{ steps.previous-tag.outputs.PREVIOUS_TAG }} → $NEW_VERSION"
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 16
+          cache: 'yarn'
       
-      - name: Create Release Notes
-        id: release-notes
-        run: |
-          # Generate release notes from commits
-          NOTES=$(git log ${{ steps.previous-tag.outputs.PREVIOUS_TAG }}..HEAD --pretty=format:"- %s%n")
-          echo "NOTES<<EOF" >> $GITHUB_OUTPUT
-          echo "$NOTES" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
       
-      - name: Create Release
-        uses: actions/create-release@v1
+      - name: Semantic Release
+        id: semantic
         env:
+          # Explicitly pass the token to semantic-release
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Create .npmrc to configure registry authentication if needed
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN || '' }}" > .npmrc
+          
+          # Run semantic-release with debug info
+          yarn semantic-release --debug
+      
+      - name: Build if release created
+        if: success() && steps.semantic.outcome == 'success'
+        run: |
+          yarn build
+          # Get the latest tag
+          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+          echo "Latest tag: $LATEST_TAG"
+          
+          # Create the archive
+          tar -czf "release-${LATEST_TAG}.tar.gz" -C build .
+          echo "RELEASE_TAG=${LATEST_TAG}" >> $GITHUB_ENV
+      
+      - name: Upload build artifact
+        if: success() && steps.semantic.outcome == 'success'
+        uses: actions/upload-artifact@v4
         with:
-          tag_name: ${{ steps.version.outputs.NEW_VERSION }}
-          release_name: Release ${{ steps.version.outputs.NEW_VERSION }}
-          body: |
-            ## What's Changed
-            ${{ steps.release-notes.outputs.NOTES }}
-          draft: false
-          prerelease: false
+          name: build-artifact
+          path: release-${{ env.RELEASE_TAG }}.tar.gz
+          retention-days: 30
