@@ -1,0 +1,58 @@
+name: Semantic Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx semantic-release
+        
+      - name: Build application
+        if: ${{ success() && steps.release.outputs.new_release_published == 'true' }}
+        run: npm run build
+        
+      - name: Create artifact archive
+        if: ${{ success() && steps.release.outputs.new_release_published == 'true' }}
+        run: |
+          tar -czf release-${{ steps.release.outputs.new_release_version }}.tar.gz -C build .
+          
+      - name: Upload build artifact to release
+        if: ${{ success() && steps.release.outputs.new_release_published == 'true' }}
+        uses: softprops/action-gh-release@v1
+        with:
+          files: release-${{ steps.release.outputs.new_release_version }}.tar.gz
+          tag_name: v${{ steps.release.outputs.new_release_version }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Upload build artifact to workflow
+        if: ${{ success() && steps.release.outputs.new_release_published == 'true' }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifact
+          path: release-${{ steps.release.outputs.new_release_version }}.tar.gz
+          retention-days: 30
