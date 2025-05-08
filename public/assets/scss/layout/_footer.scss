@@ -1,0 +1,394 @@
+/**=====================
+    5.1 Footer CSS Start
+==========================**/
+
+.footer {
+  bottom: 0;
+  left: 0;
+  transition: 0.5s;
+  font-family: "Montserrat";
+  text-align: center;
+  &.footer-bottom {
+    border-bottom: 0.5rem solid $danger-color;
+  }
+  .version {
+    position: relative;
+    &::after {
+      content: "Version 1.0.0.dev";
+      position: absolute;
+      right: -40px;
+      font-size: 8px;
+      font-weight: 500;
+    }
+  }
+
+  .last-line-container {
+    background-color: var(--osp-primary-color);
+    height: 0.5rem;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+  .footer-content {
+    padding: 2.25rem 0rem 2.25rem 0rem;
+    margin-bottom: 2rem;
+  }
+  .payment-footer {
+    margin-bottom: 2rem;
+  }
+  .footer-line-img {
+    display: none;
+  }
+  .footer-logo-img {
+    display: none;
+  }
+
+  .footer-logo-img {
+    display: none;
+  }
+
+  &.footer-dark {
+    background-color: $dark-card-background;
+
+    p {
+      color: $white;
+    }
+  }
+  .payment-methods {
+    padding: 0rem !important;
+    margin-right: 1.875rem;
+  }
+  .call-us-text {
+    font-size: clamp(1.125rem, 1.667vw, 2.5rem);
+    font-weight: 700;
+    max-width: 17rem;
+    line-height: 126%;
+    text-align: start;
+    margin-left: 1.875rem;
+
+    @media (max-width: 46rem) {
+      width: 100%;
+      margin-left: 0rem;
+    }
+    @media (min-width: 64rem) and (max-width: 87.5rem) {
+      font-size: clamp(1.25rem, 0.25vw, 1.875rem);
+    }
+    @media (min-width: 87.5rem) and (max-width: 118.75rem) {
+      font-size: clamp(1.25rem, 0.25vw, 1.875rem);
+    }
+  }
+
+  .availibility-text {
+    color: var(--osp-color-input-border);
+    font-weight: 600;
+    font-size: clamp(0.75rem, 0.667vw, 1rem);
+    line-height: 126%;
+    max-width: 17rem;
+    letter-spacing: 0rem;
+    text-align: left;
+    margin-left: 1.875rem;
+    @media (min-width: 64rem) and (max-width: 87.5rem) {
+      font-size: clamp(0.875rem, 0.917vw, 1.375rem);
+    }
+    @media (min-width: 87.5rem) and (max-width: 118.75rem) {
+      font-size: clamp(0.875rem, 0.917vw, 1.375rem);
+    }
+  }
+
+  .phone-wrapper {
+    img {
+      margin-right: 0.25rem;
+      width: clamp(1.75rem, 2.667vw, 4rem);
+      height: clamp(1.75rem, 2.667vw, 4rem);
+    }
+  }
+  .phone-wrapper1 {
+    img {
+      margin-right: 0.25rem;
+      width: clamp(1.75rem, 2.667vw, 4rem);
+      height: clamp(1.75rem, 2.667vw, 4rem);
+    }
+  }
+  .join-lobster-wrapper {
+    display: flex !important;
+    align-items: start;
+    flex-direction: row;
+  }
+  .number {
+    display: block;
+  }
+
+  /* Only show on mobile screens */
+  @media (max-width: 48rem) {
+    .number {
+      display: none;
+    }
+  }
+  .call {
+    margin-left: 3.125rem;
+  }
+  .join-lobster-outside-spain {
+    display: flex !important;
+    align-items: start;
+    flex-direction: row;
+    margin-right: 1.875rem;
+  }
+
+  .join-lobster-text {
+    font-size: clamp(0.625rem, 0.917vw, 1.375rem);
+    font-weight: 500;
+    color: var(--osp-color-input-border);
+    margin-right: 0.625rem;
+    white-space: nowrap;
+    @media (min-width: 64rem) and (max-width: 87.5rem) {
+      font-size: clamp(1.125rem, 0.917vw, 1.375rem);
+    }
+    @media (min-width: 87.5rem) and (max-width: 118.75rem) {
+      font-size: clamp(1.25rem, 0.917vw, 1.375rem);
+    }
+  }
+
+  .calling-number {
+    color: var(--osp-primary-color);
+    font-weight: 700;
+    font-size: clamp(0.75rem, 1.25vw, 1.875rem);
+    text-align: left;
+    @media (min-width: 64rem) and (max-width: 87.5rem) {
+      font-size: clamp(1.25rem, 0.25vw, 1.875rem);
+    }
+    @media (min-width: 87.5rem) and (max-width: 118.75rem) {
+      font-size: clamp(1.25rem, 0.25vw, 1.875rem);
+    }
+  }
+
+  .calling-number3 {
+    color: var(--osp-primary-color);
+    font-weight: 700;
+    font-size: clamp(0.75rem, 1.25vw, 1.875rem);
+    white-space: nowrap;
+    @media (min-width: 64rem) and (max-width: 87.5rem) {
+      font-size: clamp(1.25rem, 0.25vw, 1.875rem);
+    }
+    @media (min-width: 87.5rem) and (max-width: 118.75rem) {
+      font-size: clamp(1.25rem, 0.25vw, 1.875rem);
+    }
+  }
+  .lang {
+    margin-right: 0.625rem;
+  }
+  .footer-img {
+    max-width: 100%;
+    padding-right: 3rem;
+    padding-left: 3.5rem;
+    margin-bottom: 2rem;
+    @media (max-width: 46rem) {
+      width: 20.3125rem;
+      font-weight: bold;
+    }
+  }
+
+  .payment-icons {
+    text-align: left !important;
+    margin-left: 2.5rem;
+
+    img {
+      margin-right: 0.625rem;
+    }
+  }
+
+  .payment-wrapper {
+    padding: 0rem 8rem;
+  }
+
+  .language-btn-footer {
+    font-size: clamp(0.875rem, 0.583vw, 0.875rem);
+    font-weight: 400;
+    &.active {
+      font-weight: 700;
+    }
+    @media (min-width: 64rem) and (max-width: 87.5rem) {
+      font-size: clamp(1rem, 0.25vw, 1.875rem);
+    }
+    @media (min-width: 87.5rem) and (max-width: 118.75rem) {
+      font-size: clamp(1rem, 0.25vw, 1.875rem);
+    }
+  }
+
+  .p-listbox {
+    border: 0 !important;
+    border-radius: initial;
+    background: transparent;
+  }
+
+  .p-listbox-list {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    flex-wrap: wrap;
+    font-family: "Montserrat";
+    font-size: clamp(0.625rem, 0.5vw, 0.75rem);
+    font-weight: 500;
+    line-height: 0.945rem;
+    text-align: left;
+    color: $nero-black;
+    column-gap: 1.5rem;
+    row-gap: 0.5rem;
+    padding: 0rem;
+
+    @media (min-width: 64rem) and (max-width: 87.5rem) {
+      font-size: clamp(0.875rem, 0.25vw, 1.875rem);
+    }
+    @media (min-width: 87.5rem) and (max-width: 118.75rem) {
+      font-size: clamp(1.125rem, 0.25vw, 1.875rem);
+    }
+  }
+}
+
+.footer-fix {
+  width: calc(100% - $sidebar-compact-width);
+  position: fixed;
+}
+.p-listbox-item {
+  padding: 0rem 0rem;
+  line-height: initial;
+}
+@media (min-width: 75rem) and (max-width: 118.75rem) {
+  .col {
+    display: flex;
+    justify-content: end;
+  }
+}
+@media (max-width: 46rem) {
+  .footer {
+    text-align: left;
+    .footer-content {
+      padding: 0;
+      margin-bottom: 1.5rem;
+    }
+    .english-text {
+      font-weight: 700;
+    }
+    .spanish-text {
+      font-weight: 500;
+    }
+    .p-listbox-list {
+      margin-left: 0rem;
+      padding: 0.5rem;
+      padding-top: 0rem;
+    }
+    .container {
+      padding: 0rem 1rem 0rem 1rem;
+    }
+    .last-line-container {
+      padding: 0rem;
+      margin-top: 0rem;
+    }
+    .phone-wrapper {
+      width: 1.5rem;
+      height: 2rem;
+      margin-right: 7px;
+
+      img {
+        width: 28px;
+        height: 28px;
+      }
+    }
+    .phone-wrapper1 {
+      width: 1.5rem;
+      height: 2rem;
+      margin-right: 7px;
+
+      img {
+        width: 28px;
+        height: 28px;
+        margin-top: 15px;
+      }
+    }
+    .calling-number3 {
+      margin-bottom: 0px;
+    }
+    .footer-img {
+      display: none;
+    }
+
+    .footer-line-img {
+      display: flex;
+      justify-content: center;
+      padding: 0rem 0.8287rem 0rem 0.71rem;
+      margin-bottom: 1.5rem;
+    }
+    .last-line-img {
+      display: flex;
+      justify-content: center;
+      padding: 0rem 0.8287rem 0rem 0.71rem;
+      margin-bottom: 1rem;
+      margin-left: 15px;
+    }
+
+    .footer-logo-img {
+      display: flex;
+      margin-bottom: 1.5rem;
+    }
+
+    .join-lobster-wrapper {
+      align-items: baseline;
+      justify-content: center;
+      margin-left: 0px;
+    }
+
+    .join-lobster-outside-spain {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .calling-number {
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .payment-wrapper {
+      padding: 0rem 0rem;
+    }
+
+    .availibility-text {
+      margin-bottom: 0;
+      margin-left: 0rem;
+      margin-bottom: 0.5rem;
+      max-width: 19.9375rem;
+    }
+
+    .payment-methods {
+      display: flex;
+      justify-content: center;
+      padding: 0rem !important;
+      margin-right: 0px;
+    }
+    .payment-footer {
+      margin-bottom: 0px;
+    }
+    .payment-icons {
+      margin-bottom: 2rem;
+      padding: 0;
+      margin-left: 0px;
+
+      img {
+        margin-right: 1rem;
+      }
+    }
+    .version {
+      &::after {
+        right: 0px;
+      }
+    }
+  }
+
+  .p-listbox .p-listbox-list .p-listbox-item {
+    margin-top: 0;
+    padding: 0rem;
+  }
+}
+
+/**=====================
+    5.1 Footer CSS Ends
+==========================**/

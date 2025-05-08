@@ -1,0 +1,96 @@
+.order-placed-stepper-container {
+  padding-top: 3.75rem;
+  padding-bottom: 7.75rem;
+  display: flex;
+  justify-content: center;
+  .MuiStepLabel-label {
+    font-family: "Montserrat";
+    font-size: 1rem;
+    font-weight: 700 !important;
+    line-height: 1.26rem;
+    text-align: center;
+    color: var(--osp-color-grey) !important;
+    margin-top: 0.5rem;
+  }
+
+  .Mui-completed.MuiStepLabel-label {
+    font-family: "Montserrat";
+    font-size: 1rem;
+    font-weight: 700 !important;
+    line-height: 1.26rem;
+    text-align: center;
+    color: var(--osp-black-color) !important;
+  }
+
+  .Mui-active.MuiStepLabel-label {
+    font-family: "Montserrat";
+    font-size: 1rem;
+    font-weight: 700 !important;
+    line-height: 1.26rem;
+    text-align: center;
+    color: var(--osp-black-color) !important;
+  }
+
+  .MuiStepLabel-iconContainer {
+    width: 1.625rem;
+    height: 1.625rem;
+    border-radius: 6rem;
+    color: var(--osp-white-color);
+    border: 0.1875rem solid var(--osp-stepper-icon-border);
+
+    .MuiSvgIcon-root {
+      display: none;
+    }
+  }
+
+  .MuiStepConnector-line {
+    border-width: 0.5rem;
+    border-color: var(--osp-stepper-icon-border);
+  }
+
+  .Mui-completed.MuiStepLabel-iconContainer {
+    border: 0.1875rem solid var(--osp-primary-color);
+    background: none;
+    position: relative;
+    transition: all ease;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 3px;
+      right: 7px;
+      width: 6px;
+      height: 12px;
+      transform: rotate(45deg);
+      border: 1px solid var(--osp-primary-color);
+      border-width: 0px 2px 2px 0px;
+      border-radius: 1px;
+    }
+  }
+
+  .Mui-active.MuiStepLabel-iconContainer {
+    border: 0.1875rem dashed var(--osp-primary-color);
+  }
+
+  .stepper-content {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 2rem;
+    width: 100%;
+  }
+  @media (max-width: 48rem){
+    padding-bottom: 3rem;
+    padding-left: 1rem;
+    
+    .stepper-content {
+      width: calc(100% + 1.15rem);
+      max-width: 100vw;
+    }
+    .links {
+      flex-direction: column;
+      font-size: .85rem;
+      .faded-text a {
+        font-size: .85rem;
+      }
+    }
+  }
+}

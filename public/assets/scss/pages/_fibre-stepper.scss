@@ -1,0 +1,660 @@
+// .planDetailContainer {
+//   height: fit-content;
+//   padding-bottom: 6rem;
+//   width: 100%;
+//   background: var(--color-offwhite);
+//   *font-family: "Montserrat";
+//   justify-content: center;
+//   align-items: center;
+//   background: var(--color-offwhite);
+
+//   .fibre-version {
+//     position: absolute;
+//     right: 9.5rem;
+//     bottom: 4.375rem;
+//     width: 33.125rem;
+//     border-radius: 1rem;
+//     background: var(--osp-white-color);
+//     box-shadow: none;
+//     .p-card-body {
+//       padding: 1rem;
+//       .p-card-content {
+//         display: flex;
+//         justify-content: space-between;
+//         padding: 0rem;
+//         li {
+//           color: var(--osp-primary-color);
+//           font-family: "Montserrat";
+//           font-size: 1rem;
+//           font-style: normal;
+//           font-weight: 500;
+//           line-height: 200%;
+//         }
+//         .id-type:first-child {
+//           color: var(--osp-primary-color);
+//           font-family: "Montserrat";
+//           font-size: 1.125rem;
+//           font-style: normal;
+//           font-weight: 700;
+//           line-height: 126%;
+//         }
+//       }
+//     }
+//   }
+
+//   .iccid-card {
+//     display: flex;
+//     width: 27.6875rem;
+//     padding: 1rem;
+//     align-items: flex-start;
+//     gap: 5rem;
+//     bottom: 0rem;
+//     position: absolute;
+//     margin-left: 23%;
+//     .p-card-body {
+//       padding: 0rem;
+//     }
+//     .p-card-content {
+//       padding: 0rem;
+//     }
+//     p {
+//       color: var(--Brand-Pink-Pink-800, #eb5078);
+//       font-family: "Montserrat";
+//       font-size: 1.125rem;
+//       font-style: normal;
+//       font-weight: 700;
+//       line-height: 126%;
+//     }
+//     span {
+//       color: var(--Brand-Pink-Pink-800, #eb5078);
+//       font-family: "Montserrat";
+//       font-size: 1rem;
+//       font-style: normal;
+//       font-weight: 500;
+//       line-height: 126%;
+//       margin-bottom: 1rem;
+//     }
+//   }
+//   .row {
+//     margin-left: 0% !important;
+//     margin-right: 0% !important;
+//   }
+//   .header-img {
+//     margin-top: 3rem;
+//   }
+//   .plan-detail-header {
+//     margin-bottom: 6rem;
+//     margin-top: 80px;
+//   }
+//   .plan-detail-mobile-header {
+//     display: none;
+//   }
+//   .middle-container {
+//     padding: 0% 5rem !important;
+//   }
+//   @media (max-width: 75rem) {
+//     .middle-container {
+//       padding: 0% 0rem !important;
+//     }
+//   }
+
+//   @media (max-width: 62rem) {
+//     .MuiStepLabel-label {
+//       min-height: min-content !important;
+//     }
+//     .content-label {
+//       min-width: fit-content !important;
+//     }
+//   }
+//   @media (max-width: 36rem) {
+//     text-align: center;
+//     background: var(--color-offwhite);
+//     .MuiStepLabel-label {
+//       min-height: min-content !important;
+//     }
+//     .content-label {
+//       min-width: 55% !important;
+//     }
+//     .row > * {
+//       padding: 0 !important;
+//       margin: 0 !important;
+//     }
+
+//     .plan-detail-header {
+//       display: none;
+//     }
+
+//     .plan-detail-mobile-header {
+//       display: block;
+//     }
+//   }
+
+//   .purchasing-process {
+//     .middle-container {
+//       display: flex;
+//       flex-direction: row;
+//       justify-content: space-around;
+//     }
+//     @media (max-width: 68.75rem) {
+//       flex-direction: column;
+//       .process-steps {
+//         display: flex;
+//         justify-content: center;
+//         width: 100%;
+//       }
+//       .order-detail-card {
+//         display: none;
+//       }
+//     }
+//     @media (max-width: 36rem) {
+//       padding: 0rem;
+//     }
+//   }
+
+//   .process-steps {
+//     display: flex;
+//     justify-content: end;
+
+//     @media (max-width: 45rem) {
+//       display: block !important;
+//       width: 100%;
+//     }
+//   }
+
+//   .custom-stepper {
+//     border: 0.0625rem solid var(--background-color);
+//     color: var(--background-color);
+//     margin-bottom: 0.5rem;
+//   }
+
+//   .custom-stepper.active {
+//     border: 0.1875rem solid var(--background-color) !important;
+//     color: var(--background-color);
+//   }
+
+//   .custom-stepper.completed {
+//     border: 0.1875rem solid var(--color-stepper-off) !important;
+//     color: var(--color-stepper-off);
+//   }
+//   @media (max-width: 62rem) {
+//     .custom-stepper.completed {
+//       height: 1.7rem !important;
+//       width: 2rem !important;
+//       max-width: 1.7rem !important;
+//     }
+//     .custom-stepper {
+//       height: 1.7rem !important;
+//       width: 1.7rem !important;
+//       min-width: 1.7rem !important;
+//       font-size: 1.125rem !important;
+//     }
+//     .content-label {
+//       margin-top: 0.15rem !important;
+//       font-size: 1.125rem !important;
+//       .step-sublabel {
+//         span {
+//           font-size: 0.875rem !important;
+//         }
+//       }
+//     }
+//   }
+//   .fibre-stepper {
+//     min-width: 42.375rem;
+//     .content-label {
+//       margin-right: auto;
+//       display: flex;
+//       flex-direction: column;
+//       margin-top: 0.3rem;
+//     }
+
+//     .Mui-completed {
+//       .content-label {
+//         margin-right: auto;
+//         display: flex;
+//         flex-direction: column;
+//         color: #e5e5e5;
+//         .step-sublabel {
+//           display: flex;
+//           flex-direction: column;
+//           @media (max-width: 26.5rem) {
+//             max-width: 11.1875rem;
+//           }
+
+//           span {
+//             font-size: 1.125rem;
+//             font-weight: 600;
+//             line-height: 1.4175rem;
+//             text-align: left;
+//             color: #b3b3b3;
+//             margin-top: 0.3rem;
+//             word-wrap: break-word;
+//           }
+//           .data-container {
+//             display: flex;
+//             flex-direction: column;
+//           }
+//         }
+//       }
+//     }
+
+//     .custom-stepper {
+//       display: "inline-block";
+//       color: var--color-stepper-off;
+//       border-radius: 3rem;
+//       border: 0.125rem solid var(--color-stepper-off);
+//       width: 3rem;
+//       height: 3rem;
+//       margin-bottom: 0.625rem;
+//       margin-right: 0.625rem;
+//       text-align: center;
+//       @media (max-width: 62rem) {
+//         width: 2rem;
+//         height: 2rem;
+//       }
+//     }
+//     .MuiStepLabel-label {
+//       padding: 1rem 0rem 0rem 0rem;
+//     }
+
+//     .MuiStepIcon-root.Mui-completed {
+//       color: var(--color-stepper-off);
+//     }
+
+//     .MuiStepLabel-label.Mui-completed {
+//       font-weight: 700;
+//       display: flex;
+//       justify-content: space-between;
+//       align-items: start;
+//       color: var(--color-stepper-off);
+//       width: 100%;
+//     }
+
+//     .MuiStepIcon-root.Mui-completed {
+//       color: var--color-stepper-off;
+//       border-radius: 3rem;
+//       border: 0.125rem solid var(--color-stepper-off);
+//       width: 3rem;
+//       height: 3rem;
+//       margin-bottom: 0.625rem;
+//       display: none;
+
+//       @media (max-width: 48rem) {
+//         width: 1.5rem;
+//         height: 1.5rem;
+//       }
+//     }
+
+//     .MuiStepContent-root {
+//       border-left: none;
+//       padding: 0%;
+//       margin: 0%;
+//       margin-top: 0.625rem;
+//       @media (max-width: 46.875rem) {
+//         text-align: center;
+//       }
+//     }
+
+//     .MuiStepConnector-line {
+//       border-left-style: none;
+//       min-height: 2rem;
+//     }
+
+//     .MuiSvgIcon-root .MuiStepIcon-root.Mui-active {
+//       color: var(--color-off-white);
+//       border-radius: 1rem;
+//       border: 0.125rem solid var(--background-color);
+//     }
+
+//     .MuiStepLabel-label.Mui-active {
+//       font-weight: 700;
+//       display: flex;
+//       justify-content: space-between;
+//       align-items: start;
+//     }
+
+//     .MuiStepLabel-label.Mui-completed {
+//       font-weight: 700;
+//     }
+
+//     .-MuiSvgIcon-root .MuiStepIcon-root.Mui-completed {
+//       color: var(--color-stepper-off);
+//       border-radius: 1rem;
+//       border: 0.125rem solid var(--color-stepper-off);
+//     }
+
+//     .-MuiSvgIcon-root .MuiStepIcon-root {
+//       height: 2rem;
+//       width: 2rem;
+//     }
+
+//     .MuiStepIcon-text {
+//       fill: var(--background-color);
+//       font-size: 1.25rem;
+//       font-family: "Montserrat";
+//       font-weight: 700;
+//     }
+
+//     .MuiButtonBase-root .MuiButton-root {
+//       font-size: 0.875rem;
+//       color: var(--background-color);
+//       border-radius: 2.5rem;
+//       width: max-content;
+//       font-family: "Montserrat";
+//       text-transform: capitalize;
+//       font-weight: 600;
+//       float: right;
+//       padding: 0%;
+
+//       &:hover {
+//         background-color: var(--color-off-white);
+//       }
+//     }
+
+//     .MuiStepIcon-root.Mui-active {
+//       color: var(--color-offwhite);
+//       border: 0.1875rem solid var(--background-color) !important;
+//       border-radius: 6rem;
+//       width: 3rem;
+//       height: 3rem;
+//       display: none;
+
+//       @media (max-width: 48rem) {
+//         width: 1.5rem;
+//         height: 1.5rem;
+//       }
+//     }
+
+//     .MuiButtonBase-root .MuiButton-root {
+//       margin-top: 0rem;
+//     }
+
+//     .MuiStepLabel-label {
+//       font-family: "Montserrat";
+//       font-size: 1.875rem;
+//       font-weight: 700;
+//       text-align: left;
+
+//       @media (max-width: 48rem) {
+//         text-align: left;
+//         font-size: 1.125rem;
+//         font-weight: 700;
+//         width: 18.3125rem;
+//         height: 1.4375rem;
+//         font-size: 1.125rem;
+//         line-height: 1.4219rem;
+//       }
+//     }
+
+//     .grid {
+//       justify-content: space-between;
+//     }
+//   }
+
+//   .grid {
+//     margin: 0;
+//     display: block;
+
+//     .change-btn {
+//       background: var(--color-offwhite) !important;
+//       color: var(--background-color);
+//       border: none;
+//       float: right;
+//       font-family: "Montserrat";
+//       font-size: 1rem;
+//       font-weight: 700;
+//       margin-top: 0.3rem;
+//     }
+
+//     .next-btn {
+//       background-color: var(--background-color) !important;
+//       border-radius: 2.5rem;
+//       border: var(--background-color) !important;
+//       width: 12.875rem;
+//       height: 3.625rem;
+//       padding: 0.75rem 1rem 0.75rem 1rem;
+//
+//       font-weight: 700;
+//       font-size: 1.375rem;
+//       font-family: "Montserrat";
+//       box-shadow: 0rem 0.25rem 0.125rem 0rem #912a460d;
+//       margin-top: 3rem;
+
+//       @media (max-width: 46.875rem) {
+//         width: 77% !important;
+//         height: 2.5rem;
+//         padding: 0.5rem 0.75rem 0.5rem 0rem;
+//         border-radius: 2.5rem;
+//
+//         margin-left: 0rem !important;
+//         margin-top: 0.625rem;
+//         font-family: "Montserrat";
+//         font-size: 1rem;
+//         font-weight: 700;
+//         line-height: 1.26rem;
+//         text-align: center;
+//       }
+//     }
+//   }
+//   .buy-btn {
+//     background-color: var(--background-color) !important;
+//     border-radius: 2.5rem;
+//     border: var(--background-color) !important;
+//     width: 12.875rem;
+//     height: 3.625rem;
+//     padding: 0.75rem 1rem 0.75rem 1rem;
+//
+//     font-weight: 700;
+//     font-size: 1.375rem;
+//     font-family: "Montserrat";
+//     box-shadow: 0rem 0.25rem 0.125rem 0rem #912a460d;
+//     margin-top: 3rem;
+//     margin-left: 4rem;
+
+//     @media (max-width: 46.875rem) {
+//       width: 77% !important;
+//       height: 2.5rem;
+//       padding: 0.5rem 0.75rem 0.5rem 0rem;
+//       border-radius: 2.5rem;
+//
+//       margin-left: 0rem !important;
+//       margin-top: 0.625rem;
+//       font-family: "Montserrat";
+//       font-size: 1rem;
+//       font-weight: 700;
+//       line-height: 1.26rem;
+//       text-align: center;
+//     }
+//   }
+
+//   .selectPlainType {
+//     font-size: 0.875rem;
+//     font-weight: 500;
+//     font-family: "Montserrat";
+//     color: var(--color-gray);
+//     margin-right: auto;
+//   }
+
+//   .modifierLink {
+//     margin-top: 0.125rem;
+//     margin-left: auto;
+//     font-size: 0.875rem;
+//     color: var(--background-color);
+//     font-family: "Montserrat";
+//     font-weight: 500;
+//   }
+
+//   .option {
+//     font-family: "Montserrat";
+//     font-size: 1.125rem;
+//     font-weight: 600;
+//     line-height: 1.4175rem;
+//     text-align: left;
+//     margin-bottom: 1.5rem;
+
+//     @media (max-width: 48rem) {
+//       text-align: left;
+//       font-size: 0.875rem;
+//       font-weight: 600;
+//       line-height: 1.1025rem;
+//     }
+//   }
+
+//   .plan-heading {
+//     display: flex;
+//     column-gap: 0.625rem;
+//   }
+
+//   .card {
+//     &:hover {
+//       background-color: transparent;
+//       box-shadow: none !important;
+//     }
+
+//     .card .card-body {
+//       border-radius: 1rem;
+//       border: 0.0625rem;
+//
+//     }
+
+//     background: transparent;
+//     margin-left: 1.8rem;
+//     display: flex;
+//     flex-direction: row;
+//     margin-bottom: 0rem;
+//     transition: all 0.3s ease;
+//     letter-spacing: 0.0313rem;
+
+//     margin-top: 0.5rem;
+
+//     @media (max-width: 48rem) {
+//       flex-direction: column;
+//       text-align: left;
+//       margin-left: 1.5rem;
+//     }
+
+//     .p-card {
+//       h5 {
+//         font-family: "Montserrat";
+//         font-size: 1.125rem;
+//         font-weight: 700;
+//         letter-spacing: 0;
+//         line-height: 1.4175rem;
+
+//         @media (max-width: 48rem) {
+//           flex-direction: column;
+//           text-align: left;
+//           font-family: "Montserrat";
+//           font-size: 0.875rem;
+//           font-weight: 600;
+//           line-height: 0.665rem;
+//           text-align: left;
+//         }
+//       }
+
+//       cursor: pointer;
+//       margin-bottom: 1rem;
+//       width: 16.25rem;
+//       height: 5.875rem;
+
+//       border-radius: 1rem;
+//       border: 0.0625rem;
+//
+
+//       border: 0.0625rem solid var(--grey-color);
+//       border-radius: 1rem;
+//       transition: all 0.3s ease-in-out;
+//       box-shadow: 0rem 0.25rem 0.125rem 0rem #912a460d;
+
+//       @media (max-width: 48rem) {
+//         flex-direction: column;
+//         text-align: left;
+//         height: 3rem;
+//         width: 20rem;
+//         border-radius: 1rem;
+//       }
+
+//       &:hover {
+//         border: 0.0625rem solid var(--background-color);
+//         box-shadow: inset 0 0 0.125rem var(--background-color);
+//       }
+
+//       &.selected-card {
+//         border: 0.0625rem solid var(--background-color);
+//         box-shadow: inset 0 0 0.125rem var(--background-color);
+//       }
+//     }
+//   }
+//   s .pi {
+//     font-family: "primeicons" !important;
+//     border: 0.0625rem solid var(--background-color);
+//     background-color: var(--background-color);
+//     color: var(--tag-text-color);
+//     border-radius: 1rem;
+//     font-size: 0.5625rem;
+//     width: 1.1rem;
+//     height: 1.1rem;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//   }
+
+//   .p-card-header {
+//     display: flex;
+//     justify-content: flex-end;
+//     margin-right: 0.25rem;
+//     margin-bottom: -1.5rem;
+//     padding: 0;
+//   }
+
+//   .p-card-body {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: flex-start;
+
+//     font-size: 1.125rem;
+
+//     line-height: 1.35rem;
+//     text-align: left;
+//     text-underline-position: from-font;
+//     text-decoration-skip-ink: none;
+//   }
+
+//   .p-card-title {
+//     font-size: 0.89rem;
+//     line-height: 1rem;
+//     font-family: "Montserrat", sans-serif;
+//     font-weight: 600;
+//     color: var(--tag-remove-btn-bg--hover);
+//     text-align: left;
+//     padding-left: 0.5625rem;
+//     margin: 0;
+
+//     @media (max-width: 48rem) {
+//       text-align: left;
+//     }
+//   }
+
+//   .order-detail-card {
+//     display: flex;
+//     justify-content: center;
+//     @media (max-width: 62rem) {
+//       display: none;
+//     }
+//   }
+
+//   .p-card-subtitle {
+//     font-size: 0.7rem;
+//     font-family: "Montserrat", sans-serif;
+//     font-weight: 500;
+//     color: var(--grey-color);
+//     text-align: left;
+//     padding-left: 0.5625rem;
+//   }
+// }
+// @media (max-width: 68.6875rem) {
+//   .row {
+//     margin-left: 0 !important;
+//     margin-right: 0 !important;
+//     padding: 0 !important;
+//   }
+// }
