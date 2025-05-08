@@ -11,10 +11,6 @@
     "postbuild": "cp package.json .next/standalone/ && cp .env* .next/standalone/ && cp -r public .next/standalone/",
     "semantic-release": "semantic-release"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Rishab318/Whether-cli.git"
-  },
   "engines": {
     "node": ">=20.8.1"
   },
