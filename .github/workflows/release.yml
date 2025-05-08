@@ -1,0 +1,64 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'yarn'
+      
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      
+      - name: Release
+        id: semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          yarn semantic-release
+      
+      - name: Get release info
+        if: steps.semantic-release.outcome == 'success'
+        id: get-version
+        run: |
+          if [[ $(git tag --points-at HEAD) ]]; then
+            LATEST_TAG=$(git tag --points-at HEAD)
+          else
+            LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+          fi
+          echo "RELEASE_TAG=${LATEST_TAG}" >> $GITHUB_ENV
+          echo "Release tag: ${LATEST_TAG}"
+      
+      - name: Build project
+        if: steps.semantic-release.outcome == 'success'
+        run: |
+          yarn build
+          tar -czf "release-${{ env.RELEASE_TAG }}.tar.gz" -C .next .
+      
+      - name: Upload build artifact
+        if: steps.semantic-release.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifact
+          path: release-${{ env.RELEASE_TAG }}.tar.gz
+          retention-days: 30
